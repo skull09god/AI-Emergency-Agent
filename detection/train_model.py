@@ -113,11 +113,13 @@ def main():
     )
 
     clf = RandomForestClassifier(
-        n_estimators=200,
-        max_depth=None,
-        random_state=42,
-        n_jobs=-1,
-    )
+    n_estimators=400,
+    max_depth=None,
+    min_samples_split=4,
+    class_weight="balanced",
+    n_jobs=-1,
+    random_state=42,
+)
     clf.fit(X_train, y_train)
 
     acc = clf.score(X_test, y_test)
