@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, confusion_matrix  # NEW
 import joblib
 
 # Map folder names to numeric labels
@@ -113,14 +114,22 @@ def main():
     )
 
     clf = RandomForestClassifier(
-    n_estimators=400,
-    max_depth=None,
-    min_samples_split=4,
-    class_weight="balanced",
-    n_jobs=-1,
-    random_state=42,
-)
+        n_estimators=400,
+        max_depth=None,
+        min_samples_split=4,
+        class_weight="balanced",
+        n_jobs=-1,
+        random_state=42,
+    )
     clf.fit(X_train, y_train)
+
+    # --- NEW: detailed metrics on validation set ---
+    y_pred = clf.predict(X_test)
+    print("Classification report:")
+    print(classification_report(y_test, y_pred, target_names=[LABEL_NAMES[i] for i in sorted(LABEL_NAMES)]))
+    print("Confusion matrix:")
+    print(confusion_matrix(y_test, y_pred))
+    # ------------------------------------------------
 
     acc = clf.score(X_test, y_test)
     print(f"Validation accuracy: {acc:.3f}")
