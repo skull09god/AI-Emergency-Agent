@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-AI Emergency Agent is an AI‑powered emergency detection and escalation system built to analyze short CCTV‑style videos and identify potentially dangerous situations in near real time. The system ingests video clips, extracts representative frames, applies machine‑learning models to detect incidents such as fights, threats, thefts, or abnormal activity, assigns a confidence and risk level, logs the incident, and can notify responders automatically. The project consists of a FastAPI backend**, a **Next.js web dashboard**, multiple ML pipelines for video and image understanding**, and clearly defined **integration points for sponsor technologies** such as Cline, Kastra, Oumi, Vercel, and Coderabbit.
+AI Emergency Agent is an AI‑powered emergency detection and escalation system built to analyze short CCTV‑style videos and identify potentially dangerous situations in near real time. The system ingests video clips, extracts representative frames, applies machine‑learning models to detect incidents such as fights, threats, thefts, or abnormal activity, assigns a confidence and risk level, logs the incident, and can notify responders automatically. The project consists of a FastAPI backend, a Next.js web dashboard**, multiple ML pipelines for video and image understanding, and clearly defined integration points for sponsor technologies such as Cline, Kastra, Oumi, Vercel, and Coderabbit.
 
 ---
 
