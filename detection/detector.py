@@ -1,32 +1,41 @@
-import numpy as np
-import joblib
-import os
+# detection/detector.py
 
-# Load the trained model and label names
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "motion_model.joblib")
-bundle = joblib.load(MODEL_PATH)
-model = bundle["model"]
-LABEL_NAMES = bundle["label_names"]  # e.g. {0: "normal", 1: "fight", 2: "theft", 3: "threat"}
+# Stub motion detector for deployment without model files.
+# Keeps the same function name so backend/app.py imports still work.
+
+from typing import Literal, TypedDict
 
 
-def simple_detector(motion_mean, motion_ratio, motion_std, motion_pixels, frame_idx):
+class DetectionResult(TypedDict):
+    pose: str
+    confidence: float
+
+
+Label = Literal["normal", "fight", "theft", "threat"]
+
+
+def simple_detector(
+    motion_mean: float,
+    motion_ratio: float,
+    motion_std: float,
+    motion_pixels: float,
+    frame_idx: int,
+) -> DetectionResult:
     """
-    Predict class (normal / fight / theft / threat) from motion features.
-    These 5 features must match train_model.py.
-    """
-    features = np.array([[motion_mean, motion_ratio, motion_std, motion_pixels, frame_idx]])
-    probs = model.predict_proba(features)[0]
-    pred_class = int(np.argmax(probs))
-    confidence = float(probs[pred_class])
-    label = LABEL_NAMES[pred_class]
+    Dummy motion detector used in the deployed backend.
 
+    Args:
+        motion_mean: Mean motion (unused in stub).
+        motion_ratio: Motion ratio (unused in stub).
+        motion_std: Motion std (unused in stub).
+        motion_pixels: Motion pixels (unused in stub).
+        frame_idx: Frame index (unused in stub).
+
+    Returns:
+        Fixed label and confidence for demo.
+    """
+    # Always return a fixed label; adjust if you want a different default.
     return {
-        "pose": label,
-        "confidence": confidence,
+        "pose": "normal",
+        "confidence": 0.5,
     }
-
-
-if __name__ == "__main__":
-    # quick test on dummy features
-    result = simple_detector(5.0, 0.01, 10.0, 1000, 10)
-    print(result)
