@@ -18,6 +18,9 @@ from datetime import datetime, timezone
 from typing import List, Dict, Any
 import httpx
 
+KASTRA_FLOW_URL = os.getenv("KASTRA_FLOW_URL")
+
+
 
 # ---------------- Telegram config ----------------
 
