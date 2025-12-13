@@ -1,32 +1,24 @@
-import torch
-from torchvision import transforms, models
-from PIL import Image
+# backend/emergency_model.py
 
-CKPT_PATH = "models/emergency_classifier_resnet18.pt"
+# Stub implementation used for deployment without heavy ML dependencies.
+# Later you can restore the real PyTorch model here.
 
-_tfms = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    transforms.Normalize(
-        mean=[0.485, 0.456, 0.406],
-        std=[0.229, 0.224, 0.225],
-    ),
-])
+from typing import Literal
 
-_ckpt = torch.load(CKPT_PATH, map_location="cpu")
-_class_names = _ckpt["class_names"]
-
-_model = models.resnet18(weights=None)
-num_feats = _model.fc.in_features
-_model.fc = torch.nn.Linear(num_feats, len(_class_names))
-_model.load_state_dict(_ckpt["state_dict"])
-_model.eval()
+Label = Literal["emergency", "non_emergency"]
 
 
-def classify_image(image_path: str) -> str:
-    img = Image.open(image_path).convert("RGB")
-    x = _tfms(img).unsqueeze(0)  # [1, C, H, W]
-    with torch.no_grad():
-        logits = _model(x)
-        pred = logits.argmax(dim=1).item()
-    return _class_names[pred]
+def classify_image(image_path: str) -> Label:
+    """
+    Dummy classifier used in the deployed backend.
+
+    Args:
+        image_path: Path to the saved image file.
+
+    Returns:
+        A simple fixed label. Replace with real model logic later.
+    """
+    # Simple placeholder rule: always return "emergency"
+    # or implement a trivial heuristic if you prefer.
+    return "emergency"
+
