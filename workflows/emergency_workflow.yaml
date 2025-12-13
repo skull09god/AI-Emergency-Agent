@@ -1,0 +1,37 @@
+id: emergency-detected
+namespace: ai-emergency
+revision: 1
+
+inputs:
+  - id: event
+    type: STRING
+  - id: confidence
+    type: DOUBLE
+  - id: clip_url
+    type: STRING
+
+tasks:
+  - id: notify-user
+    type: io.kestra.plugin.core.http.Request
+    method: POST
+    uri: "http://localhost:5002/notify"
+    contentType: application/json
+    body: |
+      {
+        "message": "Emergency detected",
+        "event": "{{ inputs.event }}",
+        "confidence": "{{ inputs.confidence }}",
+        "clip_url": "{{ inputs.clip_url }}"
+      }
+
+  - id: trigger-cline
+    type: io.kestra.plugin.core.http.Request
+    method: POST
+    uri: "http://localhost:6000/trigger"
+    contentType: application/json
+    body: |
+      {
+        "event": "{{ inputs.event }}",
+        "confidence": "{{ inputs.confidence }}",
+        "clip_url": "{{ inputs.clip_url }}"
+      }
