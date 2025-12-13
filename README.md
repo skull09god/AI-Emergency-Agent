@@ -280,7 +280,7 @@ AI-Emergency-Agent/
 
 * Alerts history view <img width="1907" height="366" alt="Screenshot 2025-12-13 170550" src="https://github.com/user-attachments/assets/96be3ba1-cd39-4f00-8af1-13021347d405" />
 
-* Telegram alert <img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/7bef03e3-e345-4652-a7a7-d29dc20bc373" />
+* Telegram alert <img width="376" height="422" alt="image" src="https://github.com/user-attachments/assets/1ef5c6e6-321f-4eac-ba28-b67030aff26e" />
 * Coderabbit PR review or Cline usage
 
 ---
