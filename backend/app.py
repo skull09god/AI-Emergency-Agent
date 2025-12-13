@@ -55,9 +55,10 @@ warnings.filterwarnings("ignore", category=UserWarning)
 app = FastAPI(title="Emergency Detection API")
 
 FRONTEND_ORIGINS = [
-    "http://localhost:3000",                      # local dev
-    "https://YOUR-PROJECT-NAME.vercel.app",       # <-- put your real Vercel URL here
+    "http://localhost:3000",
+    "https://ai-emergency-agent-z468.vercel.app",
 ]
+
 
 app.add_middleware(
     CORSMiddleware,
