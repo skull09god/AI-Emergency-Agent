@@ -1,5 +1,5 @@
 ﻿from zoneinfo import ZoneInfo  # Python 3.9+
-from .emergency_model import classify_image
+from emergency_model import classify_image
 from pathlib import Path
 import uuid
 from fastapi import FastAPI, File, UploadFile, HTTPException, BackgroundTasks
