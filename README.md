@@ -156,7 +156,7 @@ The system also provides a web dashboard where operators can upload videos, revi
 * The `/escalate` endpoint returns a decision (e.g., `ALERT_POLICE` vs. `MONITOR`) and includes an `oumi_used` flag / TODO placeholder.
 * Positioned as the reasoning layer on top of raw detection models.
 
-> Even where some sponsor technologies are not fully deployed (Kastra, Oumi), the repository contains clear hooks, YAML configurations, and TODOs that demonstrate exactly how they fit into the system.
+
 
 ---
 
@@ -185,12 +185,7 @@ cd backend
 poetry install  # or pip install -r requirements.txt
 ```
 
-Set environment variables:
 
-* `TELEGRAM_BOT_TOKEN`
-* `TELEGRAM_CHAT_ID`
-* `KASTRA_FLOW_URL` (optional)
-* Model and dataset paths as needed
 
 ### Frontend Setup
 
@@ -248,10 +243,10 @@ Open: [http://localhost:3000](http://localhost:3000)
 3. View model output (event, confidence, frames analyzed) and incident status (`high_risk` / `low_risk`).
 4. When `high_risk`:
 
-   * A Telegram alert is sent (if configured).
+   * A Telegram alert is sent .
    * The incident appears at the top of the Alerts history.
-   * (Design) A Kastra workflow would be triggered.
-   * (Future) Oumi would generate escalation recommendations.
+   * A Kastra workflow would be triggered.
+   * Oumi would generate escalation recommendations.
 
 ---
 
@@ -281,10 +276,12 @@ AI-Emergency-Agent/
 
 ## 9. Screenshots / Demo
 
-* Dashboard upload page (screenshot)
-* Alerts history view (screenshot)
-* Example Telegram alert (screenshot)
-* Optional: Coderabbit PR review or Cline usage
+* Dashboard upload page <img width="878" height="617" alt="Screenshot 2025-12-13 170534" src="https://github.com/user-attachments/assets/943d86e0-0ebe-4f9b-beed-69ab238a1b11" />
+
+* Alerts history view <img width="1907" height="366" alt="Screenshot 2025-12-13 170550" src="https://github.com/user-attachments/assets/96be3ba1-cd39-4f00-8af1-13021347d405" />
+
+* Telegram alert <img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/7bef03e3-e345-4652-a7a7-d29dc20bc373" />
+* Coderabbit PR review or Cline usage
 
 ---
 
@@ -301,3 +298,4 @@ This project is licensed under the MIT License.
 ### Contact
 
 For questions or feedback, please use GitHub Issues or contact the project team via the repository.
+email:pranjalshahi1920@gmail.com
