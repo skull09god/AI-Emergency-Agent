@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 
 export default function AlertsPage() {
   const [incidents, setIncidents] = useState([]);
@@ -13,7 +15,8 @@ export default function AlertsPage() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("http://127.0.0.1:8000/incidents");
+        const res = await fetch(`${API_BASE}/incidents`);
+
         const data = await res.json();
         setIncidents(data);
       } catch (err) {
